@@ -15,8 +15,9 @@ architecture.  The implementation combines the most recent data history with new
 user-sent information to generate a new game state.  The state is then saved and 
 sent to the browser for a visual update.  Construction of a user interface thus 
 has only two foci: movement of data to and from the server and linkage of data 
-to their respective elements.  [hangman-client-jquery]() and [hangman-client-react]()
-projects provide examples of pure component-based user interface arrangements.
+to their respective elements.  [hangman-client-jquery](https://github.com/aptivator/hangman-client-jquery)
+and [hangman-client-react]() (*coming soon*) projects provide examples of pure 
+component-based user interface arrangements.
 
 ### Configuration
 
@@ -116,8 +117,8 @@ node ./node_modules/hangman-server/dist/server
 ### Deployment Examples
 
 For complete `CORS` service and same-origin deployment examples, the following
-projects are available: [hangman-client-jquery]() and [hangman-client-react](),
-respectively.
+projects are available: [hangman-client-jquery](https://github.com/aptivator/hangman-client-jquery) 
+and [hangman-client-react]() (*coming soon*), respectively.
 
 ### REST POST Endpoints
 
