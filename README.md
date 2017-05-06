@@ -76,7 +76,7 @@ such as [$.ajax](http://api.jquery.com/jquery.ajax/) and native [fetch](https://
 may not deliver client data to the server.  In those cases a [superagent](https://visionmedia.github.io/superagent/)
 library is recommended.
 
-An example of standalone `hangman-server` deployment may be access through the
+An example of standalone `hangman-server` deployment may be accessed through the
 following [Heroku](https://www.heroku.com/) instance: https://guarded-cliffs-93737.herokuapp.com.  
 
 **Client dependency** deployment specifies, installs, and configures 
