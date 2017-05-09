@@ -1,10 +1,8 @@
-import _        from 'lodash';
-import {fromJS} from 'immutable';
+import _ from 'lodash';
 
 export default (state, data) => {
   let {letter} = data;
-  let stateJS = state.toJS();
-  let {correct, missed, secretWord, used, won, word} = stateJS;
+  let {correct, missed, secretWord, used, won, word} = state;
   
   correct = false;
   used.push(letter);
@@ -28,9 +26,8 @@ export default (state, data) => {
     }
   }
   
-  _.extend(stateJS, {correct, missed, won, word});
-  data = _.extend(data, _.omit(stateJS, 'secretWord'));
-  state = fromJS(stateJS);
+  _.extend(state, {correct, missed, won, word});
+  data = _.extend(data, _.omit(state, 'secretWord'));
   
   return [state, data];
 };

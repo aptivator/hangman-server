@@ -1,5 +1,4 @@
 import _          from 'lodash';
-import {fromJS}   from 'immutable';
 import randomWord from '../../../lib/random-word/random-word';
 
 export default (state, data = {}) => {
@@ -9,7 +8,7 @@ export default (state, data = {}) => {
   data = _.pick(data, 'id');
   
   _.extend(data, {correct: true, missed: 0, used: [], won: null, word});
-  state = fromJS(_.extend({secretWord}, data));
+  state = _.extend({secretWord}, data);
   
   return [state, data];
 };

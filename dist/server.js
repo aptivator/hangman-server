@@ -8,7 +8,6 @@ var express = _interopDefault(require('express'));
 var cors = _interopDefault(require('cors'));
 var bodyParser = _interopDefault(require('body-parser'));
 var redux = require('redux');
-var immutable = require('immutable');
 var session = _interopDefault(require('express-session'));
 var uuid = _interopDefault(require('uuid/v4'));
 
@@ -113,13 +112,12 @@ var storeUpdater = function (id, store) {
 
 var play = function (state, data) {
   var letter = data.letter;
-  var stateJS = state.toJS();
-  var correct = stateJS.correct;
-  var missed = stateJS.missed;
-  var secretWord = stateJS.secretWord;
-  var used = stateJS.used;
-  var won = stateJS.won;
-  var word = stateJS.word;
+  var correct = state.correct;
+  var missed = state.missed;
+  var secretWord = state.secretWord;
+  var used = state.used;
+  var won = state.won;
+  var word = state.word;
   
   correct = false;
   used.push(letter);
@@ -143,9 +141,8 @@ var play = function (state, data) {
     }
   }
   
-  _.extend(stateJS, {correct: correct, missed: missed, won: won, word: word});
-  data = _.extend(data, _.omit(stateJS, 'secretWord'));
-  state = immutable.fromJS(stateJS);
+  _.extend(state, {correct: correct, missed: missed, won: won, word: word});
+  data = _.extend(data, _.omit(state, 'secretWord'));
   
   return [state, data];
 };
@@ -177,7 +174,7 @@ var new_ = function (state, data) {
   data = _.pick(data, 'id');
   
   _.extend(data, {correct: true, missed: 0, used: [], won: null, word: word});
-  state = immutable.fromJS(_.extend({secretWord: secretWord}, data));
+  state = _.extend({secretWord: secretWord}, data);
   
   return [state, data];
 };
@@ -210,10 +207,7 @@ var handler$1 = function (type, data, id, res) {
   storeGenerator(id).dispatch({type: type, data: data, res: res});
 };
 
-var stateCompletionAssessor = function (store) {
-  var state = store.getState();
-  return state.get('won') !== null;
-};
+var stateCompletionAssessor = function (store) { return store.getState().won !== null; };
 
 var handler = function (type, data, id, res) {
   var storeObj = vars.stores.get(id);
