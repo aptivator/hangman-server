@@ -1,5 +1,4 @@
 import {expect} from 'chai';
-import {fromJS} from 'immutable';
 import reducer  from '../../../src/state/reducer';
 
 describe('reducer', () => {
@@ -28,14 +27,14 @@ describe('reducer', () => {
   });
   
   it('updates an existing state for guess action', () => {
-    let state = fromJS({
+    let state = {
       secretWord: 'murmansk',
       correct: true,
       missed: 0,
       used: [],
       won: null,
       word: [null, null, null, null, null, null, null, null]      
-    });
+    };
     
     let res = {
       send(data) {

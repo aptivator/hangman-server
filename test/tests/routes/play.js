@@ -109,13 +109,13 @@ describe('/play', () => {
           if(idx < letters.length - 1) {
             return letterer(++idx);
           }
-          
+
           expect(res.body).to.eql({
             correct: false,
             missed: 6,
             used: ['e', 't', 'm', 'u', 'r', 'a', 'n', 'p', 'x', 'z', 'o'],
             won: false,
-            word: ['m', 'u', 'r', 'm', 'a', 'n', null, null]
+            word: ['m', 'u', 'r', 'm', 'a', 'n', 's', 'k']
           });
           
           done();
